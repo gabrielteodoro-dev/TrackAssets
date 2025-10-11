@@ -5,6 +5,8 @@ import com.idealctvm.trackassets.model.User;
 import com.idealctvm.trackassets.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -17,5 +19,10 @@ public class UserController {
     @PostMapping()
     public User createUser(@RequestBody User user){
         return userService.createUser(user.getName());
+    }
+
+    @GetMapping()
+    public List<?> findAll(){
+        return userService.findAll();
     }
 }
