@@ -1,7 +1,6 @@
 package com.idealctvm.trackassets.controller;
 
 import com.idealctvm.trackassets.model.Asset;
-import com.idealctvm.trackassets.model.Portfolio;
 import com.idealctvm.trackassets.service.PortfolioService;
 import org.springframework.web.bind.annotation.*;
 

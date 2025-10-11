@@ -13,8 +13,10 @@ public class AssetService {
     }
 
     public Asset getPrice(String symbol){
-        Double price = alphaVantageClient.getPrince(symbol);
-
+        Double price = alphaVantageClient.getPrice(symbol);
+        if(price == null){
+            throw new RuntimeException("Asset not found or invalid symbol: " + symbol);
+        }
         return new Asset(symbol,price);
     }
 }

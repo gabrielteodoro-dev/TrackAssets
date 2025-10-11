@@ -25,8 +25,11 @@ public class PortfolioService {
     }
 
     public Asset addAsset(Long userId, String symbol) {
-        Double price = alphaVantageClient.getPrince(symbol);
+        Double price = alphaVantageClient.getPrice(symbol);
         Asset asset = new Asset(symbol.toUpperCase(), price);
+        if(price == null) {
+            throw new RuntimeException("Asset not found or invalid symbol: " + symbol);
+        }
         assetRepository.save(asset);
 
         portfolioRepository.save(new Portfolio(userId,asset));
@@ -40,7 +43,7 @@ public class PortfolioService {
 
         for (Portfolio item : listPortfolio){
             String symbol = item.getAsset().getSymbol();
-            Double price = alphaVantageClient.getPrince(symbol);
+            Double price = alphaVantageClient.getPrice(symbol);
 
             Map<String,Object> assets = new HashMap<>();
 
