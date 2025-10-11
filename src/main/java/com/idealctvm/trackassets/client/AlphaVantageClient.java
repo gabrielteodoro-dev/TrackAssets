@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -18,7 +17,7 @@ public class AlphaVantageClient {
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public Double getPrince(String symbol) throws IOException, InterruptedException {
+    public Double getPrince(String symbol){
         try {
             String URL = BASE_URL + symbol + "&apikey=" + API_KEY;
 
