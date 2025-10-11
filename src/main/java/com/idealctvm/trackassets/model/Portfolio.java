@@ -8,7 +8,7 @@ public class Portfolio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long UserId;
+    private Long userId;
 
     @ManyToOne
     private Asset asset;
@@ -17,7 +17,7 @@ public class Portfolio {
     }
 
     public Portfolio(Long userId, Asset asset) {
-        UserId = userId;
+        this.userId = userId;
         this.asset = asset;
     }
 
@@ -30,11 +30,11 @@ public class Portfolio {
     }
 
     public Long getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(Long userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public Asset getAsset() {

@@ -16,11 +16,13 @@ public class UserController {
         this.userService = userService;
     }
 
+    // Create User
     @PostMapping()
     public User createUser(@RequestBody User user){
         return userService.createUser(user.getName());
     }
 
+    // Display all users
     @GetMapping()
     public List<?> findAll(){
         return userService.findAll();

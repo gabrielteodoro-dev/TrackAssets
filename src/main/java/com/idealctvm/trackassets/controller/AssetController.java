@@ -15,6 +15,7 @@ public class AssetController {
         this.assetService = assetService;
     }
 
+    // Check asset price
     @GetMapping("/{symbol}")
     public Asset getPrice(@PathVariable String symbol) throws IOException, InterruptedException {
         return assetService.getPrice(symbol);
