@@ -21,4 +21,11 @@ public class UserService {
     public List<?> findAll() {
         return userRepository.findAll();
     }
+
+    public void deleteUser(Long userId) {
+        if(!userRepository.existsById(userId)){
+            throw new RuntimeException("User not found with ID: " + userId);
+        }
+        userRepository.deleteById(userId);
+    }
 }

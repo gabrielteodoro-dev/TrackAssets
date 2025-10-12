@@ -27,4 +27,10 @@ public class UserController {
     public List<?> findAll(){
         return userService.findAll();
     }
+
+    // Delete user
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+    }
 }
