@@ -27,4 +27,11 @@ public class PortfolioController {
     public List<Map<String, Object>> getPortfolio(@PathVariable Long userId){
         return portfolioService.getPortfolio(userId);
     }
+
+    @DeleteMapping("/users/{userId}/assets/{symbol}")
+    public String removeAsset(@PathVariable Long userId, @PathVariable String symbol){
+        portfolioService.removeAsset(userId,symbol);
+        return "Asset removed successfully";
+    }
+
 }

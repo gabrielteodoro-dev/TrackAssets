@@ -3,8 +3,10 @@ package com.idealctvm.trackassets.service;
 import com.idealctvm.trackassets.client.AlphaVantageClient;
 import com.idealctvm.trackassets.model.Asset;
 import com.idealctvm.trackassets.model.Portfolio;
+import com.idealctvm.trackassets.model.User;
 import com.idealctvm.trackassets.repository.AssetRepository;
 import com.idealctvm.trackassets.repository.PortfolioRepository;
+import com.idealctvm.trackassets.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class PortfolioService {
     private PortfolioRepository portfolioRepository;
     private AssetRepository assetRepository;
     private AlphaVantageClient alphaVantageClient;
+    private UserRepository userRepository;
 
     public PortfolioService(PortfolioRepository portfolioRepository, AssetRepository assetRepository, AlphaVantageClient alphaVantageClient) {
         this.portfolioRepository = portfolioRepository;
@@ -53,5 +56,16 @@ public class PortfolioService {
             resp.add(assets);
         }
         return resp;
+    }
+
+    public void removeAsset(Long userId, String symbol) {
+        List<Portfolio> portfolio = portfolioRepository.findByUserId(userId);
+
+        Portfolio portfolioItem = portfolio.stream()
+                .filter(p -> p.getAsset().getSymbol().equalsIgnoreCase(symbol))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Asset not found in portfolio: " + symbol));
+
+        portfolioRepository.delete((portfolioItem));
     }
 }
