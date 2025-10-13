@@ -28,10 +28,10 @@ public class PortfolioController {
         return portfolioService.getPortfolio(userId);
     }
 
+    // Delete an asset from the user's portfolio
     @DeleteMapping("/users/{userId}/assets/{symbol}")
     public String removeAsset(@PathVariable Long userId, @PathVariable String symbol){
         portfolioService.removeAsset(userId,symbol);
         return "Asset removed successfully";
     }
-
 }

@@ -3,7 +3,6 @@ package com.idealctvm.trackassets.service;
 import com.idealctvm.trackassets.client.AlphaVantageClient;
 import com.idealctvm.trackassets.model.Asset;
 import com.idealctvm.trackassets.model.Portfolio;
-import com.idealctvm.trackassets.model.User;
 import com.idealctvm.trackassets.repository.AssetRepository;
 import com.idealctvm.trackassets.repository.PortfolioRepository;
 import com.idealctvm.trackassets.repository.UserRepository;
