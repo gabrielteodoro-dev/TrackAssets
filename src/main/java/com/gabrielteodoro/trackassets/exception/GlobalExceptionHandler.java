@@ -1,4 +1,4 @@
-package com.idealctvm.trackassets.exception;
+package com.gabrielteodoro.trackassets.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

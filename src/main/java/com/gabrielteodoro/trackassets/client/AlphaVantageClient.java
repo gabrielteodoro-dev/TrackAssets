@@ -1,10 +1,11 @@
-package com.idealctvm.trackassets.client;
+package com.gabrielteodoro.trackassets.client;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -19,7 +20,7 @@ public class AlphaVantageClient {
     private final HttpClient client = HttpClient.newHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public Double getPrice(String symbol){
+    public BigDecimal getPrice(String symbol){
         try {
             String url = BASE_URL + symbol + "&apikey=" + API_KEY;
 
@@ -34,8 +35,8 @@ public class AlphaVantageClient {
             JsonNode priceNode = mapper.readTree(response)
                     .path("Global Quote")
                     .path("05. price");
-
-            return priceNode.isMissingNode() ? null : priceNode.asDouble();
+            System.out.println("BIG DECIMAL ALPHA: "+ new BigDecimal(priceNode.asText()));
+            return priceNode.isMissingNode() ? null : new BigDecimal(priceNode.asText());
 
         } catch (Exception e) {
             throw new RuntimeException("Error fetching asset price " + symbol, e);

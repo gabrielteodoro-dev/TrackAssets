@@ -1,24 +1,22 @@
-package com.idealctvm.trackassets.controller;
+package com.gabrielteodoro.trackassets.controller;
 
-import com.idealctvm.trackassets.model.Asset;
-import com.idealctvm.trackassets.service.PortfolioService;
+import com.gabrielteodoro.trackassets.model.Asset;
+import com.gabrielteodoro.trackassets.service.PortfolioService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/portfolio")
 public class PortfolioController {
-    private PortfolioService portfolioService;
-
-    public PortfolioController(PortfolioService portfolioService) {
-        this.portfolioService = portfolioService;
-    }
+    private final PortfolioService portfolioService;
 
     // Add asset to portfolio
     @PostMapping("/users/{userId}/assets")
-    public Asset addAsset(@PathVariable Long userId,@RequestBody Asset asset){
+    public Asset addAsset(@PathVariable Long userId, @RequestBody Asset asset){
         return portfolioService.addAsset(userId,asset.getSymbol());
     }
 

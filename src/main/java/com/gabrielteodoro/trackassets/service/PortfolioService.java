@@ -1,13 +1,14 @@
-package com.idealctvm.trackassets.service;
+package com.gabrielteodoro.trackassets.service;
 
-import com.idealctvm.trackassets.client.AlphaVantageClient;
-import com.idealctvm.trackassets.model.Asset;
-import com.idealctvm.trackassets.model.Portfolio;
-import com.idealctvm.trackassets.repository.AssetRepository;
-import com.idealctvm.trackassets.repository.PortfolioRepository;
-import com.idealctvm.trackassets.repository.UserRepository;
+import com.gabrielteodoro.trackassets.client.AlphaVantageClient;
+import com.gabrielteodoro.trackassets.model.Asset;
+import com.gabrielteodoro.trackassets.model.Portfolio;
+import com.gabrielteodoro.trackassets.repository.AssetRepository;
+import com.gabrielteodoro.trackassets.repository.PortfolioRepository;
+import com.gabrielteodoro.trackassets.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,7 @@ public class PortfolioService {
     }
 
     public Asset addAsset(Long userId, String symbol) {
-        Double price = alphaVantageClient.getPrice(symbol);
+        BigDecimal price = alphaVantageClient.getPrice(symbol);
         Asset asset = new Asset(symbol.toUpperCase(), price);
         if(price == null) {
             throw new RuntimeException("Asset not found or invalid symbol: " + symbol);
@@ -45,7 +46,7 @@ public class PortfolioService {
 
         for (Portfolio item : listPortfolio){
             String symbol = item.getAsset().getSymbol();
-            Double price = alphaVantageClient.getPrice(symbol);
+            BigDecimal price = alphaVantageClient.getPrice(symbol);
 
             Map<String,Object> assets = new HashMap<>();
 

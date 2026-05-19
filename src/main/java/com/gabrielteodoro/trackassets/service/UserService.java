@@ -1,7 +1,7 @@
-package com.idealctvm.trackassets.service;
+package com.gabrielteodoro.trackassets.service;
 
-import com.idealctvm.trackassets.model.User;
-import com.idealctvm.trackassets.repository.UserRepository;
+import com.gabrielteodoro.trackassets.model.User;
+import com.gabrielteodoro.trackassets.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

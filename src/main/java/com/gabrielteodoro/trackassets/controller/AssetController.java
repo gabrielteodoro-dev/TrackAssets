@@ -1,19 +1,17 @@
-package com.idealctvm.trackassets.controller;
+package com.gabrielteodoro.trackassets.controller;
 
-import com.idealctvm.trackassets.model.Asset;
-import com.idealctvm.trackassets.service.AssetService;
+import com.gabrielteodoro.trackassets.model.Asset;
+import com.gabrielteodoro.trackassets.service.AssetService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/asset")
 public class AssetController {
     private final AssetService assetService;
-
-    public AssetController(AssetService assetService) {
-        this.assetService = assetService;
-    }
 
     // Check asset price
     @GetMapping("/{symbol}")

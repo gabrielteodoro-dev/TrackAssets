@@ -1,4 +1,4 @@
-package com.idealctvm.trackassets;
+package com.gabrielteodoro.trackassets;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

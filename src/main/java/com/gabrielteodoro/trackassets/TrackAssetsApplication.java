@@ -1,4 +1,4 @@
-package com.idealctvm.trackassets;
+package com.gabrielteodoro.trackassets;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

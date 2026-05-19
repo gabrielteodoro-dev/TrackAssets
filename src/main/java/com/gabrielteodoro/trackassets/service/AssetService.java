@@ -1,19 +1,19 @@
-package com.idealctvm.trackassets.service;
+package com.gabrielteodoro.trackassets.service;
 
-import com.idealctvm.trackassets.client.AlphaVantageClient;
-import com.idealctvm.trackassets.model.Asset;
+import com.gabrielteodoro.trackassets.client.AlphaVantageClient;
+import com.gabrielteodoro.trackassets.model.Asset;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 @Service
+@RequiredArgsConstructor
 public class AssetService {
     private final AlphaVantageClient alphaVantageClient;
 
-    public AssetService(AlphaVantageClient alphaVantageClient) {
-        this.alphaVantageClient = alphaVantageClient;
-    }
-
     public Asset getPrice(String symbol){
-        Double price = alphaVantageClient.getPrice(symbol);
+        BigDecimal price = alphaVantageClient.getPrice(symbol);
         if(price == null){
             throw new RuntimeException("Asset not found or invalid symbol: " + symbol);
         }

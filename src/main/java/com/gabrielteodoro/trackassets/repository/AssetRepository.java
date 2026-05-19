@@ -1,6 +1,6 @@
-package com.idealctvm.trackassets.repository;
+package com.gabrielteodoro.trackassets.repository;
 
-import com.idealctvm.trackassets.model.Asset;
+import com.gabrielteodoro.trackassets.model.Asset;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
