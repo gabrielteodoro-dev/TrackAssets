@@ -23,7 +23,6 @@ public class AlphaVantageClient {
     public BigDecimal getPrice(String symbol){
         try {
             String url = BASE_URL + symbol + "&apikey=" + API_KEY;
-
             HttpRequest request = HttpRequest
                     .newBuilder()
                     .uri(URI.create(url))
@@ -35,7 +34,6 @@ public class AlphaVantageClient {
             JsonNode priceNode = mapper.readTree(response)
                     .path("Global Quote")
                     .path("05. price");
-            System.out.println("BIG DECIMAL ALPHA: "+ new BigDecimal(priceNode.asText()));
             return priceNode.isMissingNode() ? null : new BigDecimal(priceNode.asText());
 
         } catch (Exception e) {
